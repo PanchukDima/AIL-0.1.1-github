@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "entry": "main",
+  "globals": [
+    {
+      "id": "message",
+      "text": "Raw syscall\n"
+    }
+  ],
+  "functions": [
+    {
+      "id": "main",
+      "params": [],
+      "return": "i64",
+      "effects": [
+        "io",
+        "unsafe"
+      ],
+      "blocks": [
+        {
+          "id": "entry",
+          "params": [],
+          "instructions": [
+            {
+              "id": "nr",
+              "op": "const",
+              "type": "i64",
+              "value": 1
+            },
+            {
+              "id": "fd",
+              "op": "const",
+              "type": "i64",
+              "value": 1
+            },
+            {
+              "id": "len",
+              "op": "const",
+              "type": "i64",
+              "value": 12
+            },
+            {
+              "id": "ptr",
+              "op": "addr",
+              "type": "ptr",
+              "global": "message"
+            },
+            {
+              "id": "written",
+              "op": "syscall",
+              "type": "i64",
+              "number": "nr",
+              "args": [
+                "fd",
+                "ptr",
+                "len"
+              ]
+            },
+            {
+              "id": "exit_code",
+              "op": "const",
+              "type": "i64",
+              "value": 0
+            }
+          ],
+          "term": {
+            "op": "ret",
+            "value": "exit_code"
+          }
+        }
+      ]
+    }
+  ]
+}

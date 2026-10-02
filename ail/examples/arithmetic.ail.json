@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "entry": "main",
+  "globals": [],
+  "functions": [
+    {
+      "id": "main",
+      "params": [],
+      "return": "i64",
+      "effects": [],
+      "blocks": [
+        {
+          "id": "entry",
+          "params": [],
+          "instructions": [
+            {
+              "id": "a",
+              "op": "const",
+              "type": "i64",
+              "value": 6
+            },
+            {
+              "id": "b",
+              "op": "const",
+              "type": "i64",
+              "value": 7
+            },
+            {
+              "id": "answer",
+              "op": "call",
+              "type": "i64",
+              "function": "multiply",
+              "args": [
+                "a",
+                "b"
+              ]
+            }
+          ],
+          "term": {
+            "op": "ret",
+            "value": "answer"
+          }
+        }
+      ]
+    },
+    {
+      "id": "multiply",
+      "params": [
+        {
+          "id": "lhs",
+          "type": "i64"
+        },
+        {
+          "id": "rhs",
+          "type": "i64"
+        }
+      ],
+      "return": "i64",
+      "effects": [],
+      "blocks": [
+        {
+          "id": "entry",
+          "params": [],
+          "instructions": [
+            {
+              "id": "result",
+              "op": "mul",
+              "type": "i64",
+              "args": [
+                "lhs",
+                "rhs"
+              ]
+            }
+          ],
+          "term": {
+            "op": "ret",
+            "value": "result"
+          }
+        }
+      ]
+    }
+  ]
+}

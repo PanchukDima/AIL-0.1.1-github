@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ail-prototype"
+version = "0.1.1"
+description = "Verified structured SSA language with a Linux x86-64 backend"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+keywords = ["compiler", "ssa", "x86-64", "ai", "ir"]
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+ail = "ail.cli:main"
+
+[tool.setuptools]
+packages = ["ail"]
+
+[tool.setuptools.data-files]
+"share/ail/examples" = ["examples/*.json"]
+"share/ail/docs" = ["docs/*.md"]
+"share/ail" = ["ail.schema.json"]

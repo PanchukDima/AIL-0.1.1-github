@@ -1,0 +1,132 @@
+{
+  "version": 1,
+  "entry": "main",
+  "globals": [],
+  "functions": [
+    {
+      "id": "main",
+      "params": [],
+      "return": "i64",
+      "effects": [],
+      "blocks": [
+        {
+          "id": "entry",
+          "params": [],
+          "instructions": [
+            {
+              "id": "five",
+              "op": "const",
+              "type": "i64",
+              "value": 5
+            },
+            {
+              "id": "answer",
+              "op": "call",
+              "type": "i64",
+              "function": "factorial",
+              "args": [
+                "five"
+              ]
+            }
+          ],
+          "term": {
+            "op": "ret",
+            "value": "answer"
+          }
+        }
+      ]
+    },
+    {
+      "id": "factorial",
+      "params": [
+        {
+          "id": "n",
+          "type": "i64"
+        }
+      ],
+      "return": "i64",
+      "effects": [],
+      "blocks": [
+        {
+          "id": "entry",
+          "params": [],
+          "instructions": [
+            {
+              "id": "one",
+              "op": "const",
+              "type": "i64",
+              "value": 1
+            },
+            {
+              "id": "base",
+              "op": "sle",
+              "type": "i1",
+              "args": [
+                "n",
+                "one"
+              ]
+            }
+          ],
+          "term": {
+            "op": "branch",
+            "cond": "base",
+            "then": {
+              "target": "stop",
+              "args": []
+            },
+            "else": {
+              "target": "recurse",
+              "args": []
+            }
+          }
+        },
+        {
+          "id": "stop",
+          "params": [],
+          "instructions": [],
+          "term": {
+            "op": "ret",
+            "value": "one"
+          }
+        },
+        {
+          "id": "recurse",
+          "params": [],
+          "instructions": [
+            {
+              "id": "smaller",
+              "op": "sub",
+              "type": "i64",
+              "args": [
+                "n",
+                "one"
+              ]
+            },
+            {
+              "id": "subresult",
+              "op": "call",
+              "type": "i64",
+              "function": "factorial",
+              "args": [
+                "smaller"
+              ]
+            },
+            {
+              "id": "answer",
+              "op": "mul",
+              "type": "i64",
+              "args": [
+                "n",
+                "subresult"
+              ]
+            }
+          ],
+          "term": {
+            "op": "ret",
+            "value": "answer"
+          }
+        }
+      ]
+    }
+  ]
+}

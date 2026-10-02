@@ -1,0 +1,137 @@
+{
+  "version": 1,
+  "entry": "main",
+  "globals": [],
+  "functions": [
+    {
+      "id": "main",
+      "params": [],
+      "return": "i64",
+      "effects": [],
+      "blocks": [
+        {
+          "id": "entry",
+          "params": [],
+          "instructions": [
+            {
+              "id": "start",
+              "op": "const",
+              "type": "i64",
+              "value": 5
+            },
+            {
+              "id": "one",
+              "op": "const",
+              "type": "i64",
+              "value": 1
+            }
+          ],
+          "term": {
+            "op": "jump",
+            "target": "loop",
+            "args": [
+              "start",
+              "one"
+            ]
+          }
+        },
+        {
+          "id": "loop",
+          "params": [
+            {
+              "id": "n",
+              "type": "i64"
+            },
+            {
+              "id": "acc",
+              "type": "i64"
+            }
+          ],
+          "instructions": [
+            {
+              "id": "done",
+              "op": "sle",
+              "type": "i1",
+              "args": [
+                "n",
+                "one"
+              ]
+            }
+          ],
+          "term": {
+            "op": "branch",
+            "cond": "done",
+            "then": {
+              "target": "exit",
+              "args": [
+                "acc"
+              ]
+            },
+            "else": {
+              "target": "body",
+              "args": [
+                "n",
+                "acc"
+              ]
+            }
+          }
+        },
+        {
+          "id": "body",
+          "params": [
+            {
+              "id": "old_n",
+              "type": "i64"
+            },
+            {
+              "id": "old_acc",
+              "type": "i64"
+            }
+          ],
+          "instructions": [
+            {
+              "id": "product",
+              "op": "mul",
+              "type": "i64",
+              "args": [
+                "old_acc",
+                "old_n"
+              ]
+            },
+            {
+              "id": "next_n",
+              "op": "sub",
+              "type": "i64",
+              "args": [
+                "old_n",
+                "one"
+              ]
+            }
+          ],
+          "term": {
+            "op": "jump",
+            "target": "loop",
+            "args": [
+              "next_n",
+              "product"
+            ]
+          }
+        },
+        {
+          "id": "exit",
+          "params": [
+            {
+              "id": "answer",
+              "type": "i64"
+            }
+          ],
+          "instructions": [],
+          "term": {
+            "op": "ret",
+            "value": "answer"
+          }
+        }
+      ]
+    }
+  ]
+}

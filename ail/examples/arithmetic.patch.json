@@ -1,0 +1,17 @@
+{
+  "expected_sha256": "d511157de92db50f3d8d32decc40b5e991f91a33cf233e96e6fc8bcf73b64c3c",
+  "edits": [
+    {
+      "op": "replace_instruction",
+      "function": "main",
+      "block": "entry",
+      "id": "a",
+      "value": {
+        "id": "a",
+        "op": "const",
+        "type": "i64",
+        "value": 8
+      }
+    }
+  ]
+}

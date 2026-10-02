@@ -1,0 +1,154 @@
+{
+  "version": 1,
+  "entry": "main",
+  "globals": [],
+  "functions": [
+    {
+      "id": "main",
+      "params": [],
+      "return": "i64",
+      "effects": [],
+      "blocks": [
+        {
+          "id": "entry",
+          "params": [],
+          "instructions": [
+            {
+              "id": "zero",
+              "op": "const",
+              "type": "i64",
+              "value": 0
+            },
+            {
+              "id": "one",
+              "op": "const",
+              "type": "i64",
+              "value": 1
+            },
+            {
+              "id": "count",
+              "op": "const",
+              "type": "i64",
+              "value": 10
+            }
+          ],
+          "term": {
+            "op": "jump",
+            "target": "loop",
+            "args": [
+              "zero",
+              "one",
+              "count"
+            ]
+          }
+        },
+        {
+          "id": "loop",
+          "params": [
+            {
+              "id": "a",
+              "type": "i64"
+            },
+            {
+              "id": "b",
+              "type": "i64"
+            },
+            {
+              "id": "n",
+              "type": "i64"
+            }
+          ],
+          "instructions": [
+            {
+              "id": "done",
+              "op": "eq",
+              "type": "i1",
+              "args": [
+                "n",
+                "zero"
+              ]
+            }
+          ],
+          "term": {
+            "op": "branch",
+            "cond": "done",
+            "then": {
+              "target": "exit",
+              "args": [
+                "a"
+              ]
+            },
+            "else": {
+              "target": "body",
+              "args": [
+                "a",
+                "b",
+                "n"
+              ]
+            }
+          }
+        },
+        {
+          "id": "body",
+          "params": [
+            {
+              "id": "old_a",
+              "type": "i64"
+            },
+            {
+              "id": "old_b",
+              "type": "i64"
+            },
+            {
+              "id": "old_n",
+              "type": "i64"
+            }
+          ],
+          "instructions": [
+            {
+              "id": "next",
+              "op": "add",
+              "type": "i64",
+              "args": [
+                "old_a",
+                "old_b"
+              ]
+            },
+            {
+              "id": "remaining",
+              "op": "sub",
+              "type": "i64",
+              "args": [
+                "old_n",
+                "one"
+              ]
+            }
+          ],
+          "term": {
+            "op": "jump",
+            "target": "loop",
+            "args": [
+              "old_b",
+              "next",
+              "remaining"
+            ]
+          }
+        },
+        {
+          "id": "exit",
+          "params": [
+            {
+              "id": "answer",
+              "type": "i64"
+            }
+          ],
+          "instructions": [],
+          "term": {
+            "op": "ret",
+            "value": "answer"
+          }
+        }
+      ]
+    }
+  ]
+}

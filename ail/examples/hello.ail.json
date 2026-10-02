@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "entry": "main",
+  "globals": [
+    {
+      "id": "greeting",
+      "text": "Hello from AIL!\n"
+    }
+  ],
+  "functions": [
+    {
+      "id": "main",
+      "params": [],
+      "return": "i64",
+      "effects": [
+        "io"
+      ],
+      "blocks": [
+        {
+          "id": "entry",
+          "params": [],
+          "instructions": [
+            {
+              "id": "stdout",
+              "op": "const",
+              "type": "i64",
+              "value": 1
+            },
+            {
+              "id": "written",
+              "op": "write",
+              "type": "i64",
+              "global": "greeting",
+              "fd": "stdout"
+            },
+            {
+              "id": "exit_code",
+              "op": "const",
+              "type": "i64",
+              "value": 0
+            }
+          ],
+          "term": {
+            "op": "ret",
+            "value": "exit_code"
+          }
+        }
+      ]
+    }
+  ]
+}

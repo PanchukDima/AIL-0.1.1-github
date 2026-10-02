@@ -1,0 +1,23 @@
+name: Bug report
+description: Report a compiler, verifier or installer problem
+body:
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include ail --version and ail doctor output, OS and Python version.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Include the smallest AIL graph and the exact command.
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true

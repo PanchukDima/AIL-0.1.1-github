@@ -1,0 +1,163 @@
+{
+  "version": 1,
+  "entry": "main",
+  "globals": [],
+  "functions": [
+    {
+      "id": "main",
+      "params": [],
+      "return": "i64",
+      "effects": [],
+      "blocks": [
+        {
+          "id": "entry",
+          "params": [],
+          "instructions": [
+            {
+              "id": "v1",
+              "op": "const",
+              "type": "i64",
+              "value": 1
+            },
+            {
+              "id": "v2",
+              "op": "const",
+              "type": "i64",
+              "value": 2
+            },
+            {
+              "id": "v3",
+              "op": "const",
+              "type": "i64",
+              "value": 3
+            },
+            {
+              "id": "v4",
+              "op": "const",
+              "type": "i64",
+              "value": 4
+            },
+            {
+              "id": "v5",
+              "op": "const",
+              "type": "i64",
+              "value": 5
+            },
+            {
+              "id": "v6",
+              "op": "const",
+              "type": "i64",
+              "value": 6
+            },
+            {
+              "id": "answer",
+              "op": "call",
+              "type": "i64",
+              "function": "sum6",
+              "args": [
+                "v1",
+                "v2",
+                "v3",
+                "v4",
+                "v5",
+                "v6"
+              ]
+            }
+          ],
+          "term": {
+            "op": "ret",
+            "value": "answer"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sum6",
+      "params": [
+        {
+          "id": "a",
+          "type": "i64"
+        },
+        {
+          "id": "b",
+          "type": "i64"
+        },
+        {
+          "id": "c",
+          "type": "i64"
+        },
+        {
+          "id": "d",
+          "type": "i64"
+        },
+        {
+          "id": "e",
+          "type": "i64"
+        },
+        {
+          "id": "f",
+          "type": "i64"
+        }
+      ],
+      "return": "i64",
+      "effects": [],
+      "blocks": [
+        {
+          "id": "entry",
+          "params": [],
+          "instructions": [
+            {
+              "id": "s1",
+              "op": "add",
+              "type": "i64",
+              "args": [
+                "a",
+                "b"
+              ]
+            },
+            {
+              "id": "s2",
+              "op": "add",
+              "type": "i64",
+              "args": [
+                "s1",
+                "c"
+              ]
+            },
+            {
+              "id": "s3",
+              "op": "add",
+              "type": "i64",
+              "args": [
+                "s2",
+                "d"
+              ]
+            },
+            {
+              "id": "s4",
+              "op": "add",
+              "type": "i64",
+              "args": [
+                "s3",
+                "e"
+              ]
+            },
+            {
+              "id": "s5",
+              "op": "add",
+              "type": "i64",
+              "args": [
+                "s4",
+                "f"
+              ]
+            }
+          ],
+          "term": {
+            "op": "ret",
+            "value": "s5"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "version": 1,
+  "entry": "main",
+  "globals": [],
+  "functions": [
+    {
+      "id": "main",
+      "params": [],
+      "return": "i64",
+      "effects": [],
+      "blocks": [
+        {
+          "id": "entry",
+          "params": [],
+          "instructions": [
+            {
+              "id": "x",
+              "op": "const",
+              "type": "i64",
+              "value": 1
+            },
+            {
+              "id": "y",
+              "op": "const",
+              "type": "i64",
+              "value": 2
+            },
+            {
+              "id": "once",
+              "op": "const",
+              "type": "i64",
+              "value": 1
+            },
+            {
+              "id": "zero",
+              "op": "const",
+              "type": "i64",
+              "value": 0
+            },
+            {
+              "id": "ten",
+              "op": "const",
+              "type": "i64",
+              "value": 10
+            }
+          ],
+          "term": {
+            "op": "jump",
+            "target": "loop",
+            "args": [
+              "x",
+              "y",
+              "once"
+            ]
+          }
+        },
+        {
+          "id": "loop",
+          "params": [
+            {
+              "id": "a",
+              "type": "i64"
+            },
+            {
+              "id": "b",
+              "type": "i64"
+            },
+            {
+              "id": "n",
+              "type": "i64"
+            }
+          ],
+          "instructions": [
+            {
+              "id": "done",
+              "op": "eq",
+              "type": "i1",
+              "args": [
+                "n",
+                "zero"
+              ]
+            }
+          ],
+          "term": {
+            "op": "branch",
+            "cond": "done",
+            "then": {
+              "target": "exit",
+              "args": [
+                "a",
+                "b"
+              ]
+            },
+            "else": {
+              "target": "loop",
+              "args": [
+                "b",
+                "a",
+                "zero"
+              ]
+            }
+          }
+        },
+        {
+          "id": "exit",
+          "params": [
+            {
+              "id": "left",
+              "type": "i64"
+            },
+            {
+              "id": "right",
+              "type": "i64"
+            }
+          ],
+          "instructions": [
+            {
+              "id": "tens",
+              "op": "mul",
+              "type": "i64",
+              "args": [
+                "left",
+                "ten"
+              ]
+            },
+            {
+              "id": "answer",
+              "op": "add",
+              "type": "i64",
+              "args": [
+                "tens",
+                "right"
+              ]
+            }
+          ],
+          "term": {
+            "op": "ret",
+            "value": "answer"
+          }
+        }
+      ]
+    }
+  ]
+}
